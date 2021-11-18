@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:41:45 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/18 13:02:36 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2021/11/18 17:01:07 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ char	*ft_get_line(char *buffer)
 	char	*str;
 
 	i = 0;
-	while (buffer[i] != '\n' || buffer[i])
+	while (buffer[i] != '\n' && buffer[i])
 		i++;
 	str = malloc(sizeof(char) * i + 2);
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (buffer[i] != '\n' || buffer[i])
+	while (buffer[i] != '\n' && buffer[i])
 	{
 		str[i] = buffer[i];
 		i++;
@@ -70,13 +70,18 @@ char	*ft_move_buffer(char *buffer)
 
 	i = 0;
 	j = 0;
-	while (buffer[i] != '\n' || buffer[i])
+	while (buffer[i] != '\n' && buffer[i])
 		i++;
+	if (!buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
 	str = malloc(sizeof(char) * (ft_strlen(buffer) - i) + 1);
 	if (!str)
 		return (NULL);
 	i++;
-	while (buffer[i] != '\n' || buffer[i])
+	while (buffer[i])
 		str[j++] = buffer[i++];
 	str[j] = '\0';
 	free(buffer);
@@ -87,13 +92,22 @@ char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*line;
+	size_t		i;
 
+	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = ft_fill_buffer(fd, buffer);
 	if (!buffer)
 		return (NULL);
 	line = ft_get_line(buffer);
+	if (!line)
+		return (NULL);
+	if (!ft_strchr(line, '\n'))
+	{
+		free(line);
+		return (NULL);
+	}
 	buffer = ft_move_buffer(buffer);
 	return (line);
 }
