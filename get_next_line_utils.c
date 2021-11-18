@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:42:58 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/16 21:11:40 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2021/11/18 10:51:00 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,23 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		strjoin[i++] = s2[j++];
 	strjoin[i] = '\0';
 	return (strjoin);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen((char *)src);
+	if (dstsize > 0)
+	{
+		while (src[i] && (i + 1) < dstsize)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (len);
 }
