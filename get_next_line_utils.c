@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:42:58 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/22 11:00:53 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2021/11/22 13:03:14 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	strjoin = malloc(sizeof(char)
 			* (ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1));
 	if (!strjoin)
+	{
+		free(s1);
 		return (NULL);
+	}
 	i = 0;
 	j = 0;
 	if (s1)

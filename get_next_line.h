@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:42:54 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/22 12:37:33 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2021/11/22 13:56:45 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ char	*ft_fill_buffer(int fd, char *buffer);
 char	*ft_get_line(char *buffer);
 char	*ft_move_buffer(char *buffer);
 
-// # ifndef BUFFER_SIZE
-// #  define BUFFER_SIZE 1
-// # endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 #endif
