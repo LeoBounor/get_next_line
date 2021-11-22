@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:41:45 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/18 17:01:07 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2021/11/22 12:03:41 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ char	*ft_fill_buffer(int fd, char *buffer)
 		str[readfd] = '\0';
 		buffer = ft_strjoin(buffer, str);
 	}
+	// if (!ft_strchr(buffer, '\n') && readfd == 0)
+	// {
+	// 	free(str);
+	// 	return (NULL);
+	// }
 	free(str);
 	return (buffer);
 }
@@ -100,10 +105,13 @@ char	*get_next_line(int fd)
 	buffer = ft_fill_buffer(fd, buffer);
 	if (!buffer)
 		return (NULL);
-	line = ft_get_line(buffer);
-	if (!line)
+	if (!*buffer)
+	{
+		free(buffer);
 		return (NULL);
-	if (!ft_strchr(line, '\n'))
+	}
+	line = ft_get_line(buffer);
+	if (!*line)
 	{
 		free(line);
 		return (NULL);
