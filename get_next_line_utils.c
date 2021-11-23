@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:42:58 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/22 13:03:14 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2021/11/23 16:24:26 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,26 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
+	size_t	len1;
+	size_t	len2;
 	char	*strjoin;
 
-	if (!s2)
-		return (NULL);
-	strjoin = malloc(sizeof(char)
-			* (ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1));
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	strjoin = malloc(len1 + len2 + 1);
 	if (!strjoin)
-	{
-		free(s1);
-		return (NULL);
-	}
+		return (s1);
 	i = 0;
-	j = 0;
-	if (s1)
+	while (i < len1)
 	{
-		while (s1[i])
-			strjoin[i++] = s1[j++];
+		strjoin[i] = s1[i];
+		i++;
 	}
-	j = 0;
-	while (s2[j])
-		strjoin[i++] = s2[j++];
-	strjoin[i] = '\0';
-	if (s1)
-		free(s1);
+	j = -1;
+	while (++j < len2)
+		strjoin[i + j] = s2[j];
+	strjoin[i + j] = '\0';
+	free(s1);
 	return (strjoin);
 }
 
