@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:41:45 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/23 16:33:12 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2021/11/23 16:46:52 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ char	*ft_move_buffer(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 	size_t		i;
 
 	i = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd > OPEN_MAX || BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	buffer = ft_fill_buffer(fd, buffer);
 	if (!buffer)

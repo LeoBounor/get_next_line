@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:42:54 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/23 16:33:57 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2021/11/23 16:45:09 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 size_t	ft_strlen(char *str);
 char	*ft_strchr(char *str, int c);
