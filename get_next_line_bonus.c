@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 19:41:45 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/25 11:47:29 by lbounor          ###   ########lyon.fr   */
+/*   Created: 2021/11/25 11:44:23 by lbounor           #+#    #+#             */
+/*   Updated: 2021/11/25 11:45:47 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_fill_buffer(int fd, char *buffer)
 {
@@ -82,23 +82,23 @@ char	*ft_move_buffer(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 	size_t		i;
 
 	i = 0;
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (fd > OPEN_MAX || BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	buffer = ft_fill_buffer(fd, buffer);
-	if (!buffer)
+	buffer[fd] = ft_fill_buffer(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	if (!*buffer)
+	if (!*buffer[fd])
 	{
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 		return (NULL);
 	}
-	line = ft_get_line(buffer);
-	buffer = ft_move_buffer(buffer);
+	line = ft_get_line(buffer[fd]);
+	buffer[fd] = ft_move_buffer(buffer[fd]);
 	return (line);
 }

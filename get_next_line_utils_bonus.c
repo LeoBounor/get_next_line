@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 19:42:58 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/25 11:47:16 by lbounor          ###   ########lyon.fr   */
+/*   Created: 2021/11/25 11:44:43 by lbounor           #+#    #+#             */
+/*   Updated: 2021/11/25 11:47:04 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *str)
 {
